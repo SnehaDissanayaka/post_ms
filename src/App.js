@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
+import Popup from './components/Popup';
+import Banner from './assets/header.jpg';
 import './App.css';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentPost, setCurrentPost] = useState(null);
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
@@ -28,11 +32,19 @@ function App() {
       post.id === updatedPost.id ? updatedPost : post
     );
     savePosts(newPosts);
+    setIsEditing(false);
+    setShowPopup(false);
   };
 
   const deletePost = (id) => {
     const newPosts = posts.filter(post => post.id !== id);
     savePosts(newPosts);
+  };
+
+  const editPost = (post) => {
+    setCurrentPost(post);
+    setIsEditing(true);
+    setShowPopup(true);
   };
 
   return (
@@ -42,22 +54,20 @@ function App() {
         <h3 className="Header-name">Sneha Dissanayake</h3>
       </div>
       <div className="Body-Container">
-        <button className="btn btn-primary" onClick={() => setShowPopup(true)}>
+        <button className="btn btn-primary" onClick={() => { setShowPopup(true); setCurrentPost(null); setIsEditing(false); }}>
           Add Post
         </button>
-        <br />
-        <PostList posts={posts} updatePost={updatePost} deletePost={deletePost} />
+        <PostList posts={posts} updatePost={updatePost} deletePost={deletePost} editPost={editPost} />
       </div>
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <PostForm addPost={addPost} />
-            <button className="close-button" onClick={() => setShowPopup(false)}>
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
+      <Popup show={showPopup} onClose={() => setShowPopup(false)}>
+        <PostForm
+          post={currentPost}
+          addPost={addPost}
+          updatePost={updatePost}
+          setIsEditing={setIsEditing}
+          onClose={() => setShowPopup(false)}
+        />
+      </Popup>
     </div>
   );
 }
