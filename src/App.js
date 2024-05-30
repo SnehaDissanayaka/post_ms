@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import Popup from './components/Popup';
-import Banner from './assets/header.jpg';
+import { IoMdAddCircle } from "react-icons/io";
 import './App.css';
 
 function App() {
@@ -37,8 +37,12 @@ function App() {
   };
 
   const deletePost = (id) => {
-    const newPosts = posts.filter(post => post.id !== id);
-    savePosts(newPosts);
+
+    if(window.confirm("Do you really want to delete this Post ?")==true){
+      const newPosts = posts.filter(post => post.id !== id);
+      savePosts(newPosts);
+    }
+
   };
 
   const editPost = (post) => {
@@ -49,13 +53,13 @@ function App() {
 
   return (
     <div className="Post-Container">
-      <div className="Header-Container">
-        <h1 className="Header-text">Post Management System</h1>
-        <h3 className="Header-name">Sneha Dissanayake</h3>
+      <div className="Header-Container poppins-semibold">
+        <h2 className="Header-text">Post Management System</h2>
+        <h4 className="Header-name">Sneha Dissanayake</h4>
       </div>
       <div className="Body-Container">
-        <button className="btn btn-primary" onClick={() => { setShowPopup(true); setCurrentPost(null); setIsEditing(false); }}>
-          Add Post
+        <button className="btn add-post poppins-semibold" onClick={() => { setShowPopup(true); setCurrentPost(null); setIsEditing(false); }}>
+          <span className="add-icon"><IoMdAddCircle /></span> Create Post
         </button>
         <PostList posts={posts} updatePost={updatePost} deletePost={deletePost} editPost={editPost} />
       </div>

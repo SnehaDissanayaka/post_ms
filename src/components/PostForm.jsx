@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { TiArrowBack } from "react-icons/ti";
+import { IoIosSave } from "react-icons/io";
+import { RiChatUploadFill } from "react-icons/ri";
 import "../App.css";
 
 function PostForm({ post, addPost, updatePost, setIsEditing, onClose }) {
@@ -19,7 +22,7 @@ function PostForm({ post, addPost, updatePost, setIsEditing, onClose }) {
 
     return (
         <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group poppins-regular">
             <label htmlFor="title">Title</label>
             <input
             type="text"
@@ -41,12 +44,14 @@ function PostForm({ post, addPost, updatePost, setIsEditing, onClose }) {
             required
             />
         </div>
-        <button type="submit" className="btn btn-primary">
-            {post ? 'Update' : 'Add'} Post
-        </button>
-        <button onClick={onClose} className="btn btn-cancel">
-            Cancel
-        </button>
+        <div className='button-container'>
+            <button type="submit" className="btn primary action-button">
+                {post ? <IoIosSave /> : <RiChatUploadFill />}
+            </button>
+            <button onClick={onClose} className="btn delete action-button">
+                <TiArrowBack />
+            </button>
+        </div>
         </form>
     );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PostForm from './PostForm';
+import { MdEditSquare, MdDelete } from "react-icons/md";
 import "../App.css";
 
 function PostItem({ post, updatePost, deletePost }) {
@@ -16,10 +17,12 @@ function PostItem({ post, updatePost, deletePost }) {
             <>
                 
                 <div className="card-body">
-                <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">{post.content}</p>
-                <button className="btn btn-primary" onClick={() => setIsEditing(true)}>Edit</button>
-                <button className="btn btn-danger" onClick={() => deletePost(post.id)}>Delete</button>
+                <h5 className="card-title poppins-medium">{post.title}</h5>
+                <p className="card-text poppins-regular">{post.content}</p>
+                <div className='button-container'>
+                    <button className="btn action-button update" onClick={() => setIsEditing(true)}><MdEditSquare /></button>
+                    <button className="btn action-button delete" onClick={() => deletePost(post.id)}><MdDelete /></button>
+                </div>
                 </div>
             </>
             )}

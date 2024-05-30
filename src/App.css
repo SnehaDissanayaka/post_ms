@@ -2,7 +2,6 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  background-image: url(./assets/header.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,56 +10,97 @@
 }
 
 .Header-Container{
-  width: 90vw;
+  width: 100vw;
   margin-bottom: 0;
+  background-color: #E6CAD7;
 }
 
 .Header-name, .Header-text{
   width: inherit;
-  color: #ffffff;
+  color: #011627;
   text-align: center;
 }
 
 .Body-Container{
   width: 90vw;
-}
-
-.transparent-card {
-  background-color: rgb(129 164 55 / 55%);
-  color: #ffffff;
-}
-
-.card-footer{
-  color: #c6c7c8;
-}
-
-.create-btn{
-  margin-top: 30px;
-  width: 142px;
-  height: 42px;
-  border: brown;
-  border-radius: 6px;
-  color: #c5d475;
-  background-color: #333a14;
-  box-shadow: 1px 1px 0px 0px #819b40;
-}
-
-.Post-List-Container{
-  width: 100%;
   display: flex;
-  margin-top: 30px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
-.Post-Card{
-  background-color: #819b40;
-  width: 20%;
-
+.add-post{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 242px;
+    height: 42px;
+    border: none;
+    border-radius: 6px;
+    color: #246c4a;
+    background-color: #246c4a64;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
-.Post-Content{
-  width: 90%;
+.add-post:hover, .add-post::after{
+  border-color: #246c4a;
+  border: solid;
+  background-color:#b4ddb5;
+  color:#246c4a;
+}
+
+.add-icon{
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-button{
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.primary{
+  color: 246c4a;
+  background-color: #246c4a34;
+}
+
+.primary:hover{
+  color:#246c4a;
+  border-color: #246c4a;
+}
+
+.delete{
+  color: #89023E;
+  background-color: #89023E34;
+}
+
+.delete:hover{
+  color: #89023E;
+  border-color: #89023E;
+}
+
+.update{
+  color: #3D405B;
+  background-color: #3D405B34;
+}
+
+.update:hover{
+  border-color: #3D405B;
+  color: #3D405B;
+}
+
+.form-group{
+  margin-bottom: 10px;
 }
 
 .popup-overlay {
@@ -93,4 +133,32 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+.row{
+  margin-right: 0 !important;
+
+}
+
+body{
+  background-color: #88D18A;
+  ;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
